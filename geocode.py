@@ -48,10 +48,11 @@ if __name__ == "__main__":
             status_dict["locations"].append((addr, lat, lon))
             print lat, lon
         except geopy.geocoders.googlev3.GQueryError as e:
-            pickleit(status_dict, pickle_file)
+            # pickleit(status_dict, pickle_file)
             print "Caught a problem with the geoquery:", e
             print "Saving so far and quitting..."
-            quit()
+            print "skipping %s" % (addr.addr, )
+            # quit()
         except KeyboardInterrupt:
             pickleit(status_dict, pickle_file)
             print "Caught Ctrl+C. Saving so far and quitting..."
